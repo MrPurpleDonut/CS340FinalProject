@@ -1,0 +1,102 @@
+##########################
+## Java
+##########################
+*.class
+.mtj.tmp/
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+##########################
+# Packages #
+##########################
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.jar
+*.rar
+*.tar
+*.zip
+
+##########################
+# Others #
+##########################
+*.jpg
+*.jpeg
+Thumbs.db
+
+##########################
+## Maven
+##########################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+##########################
+## IntelliJ
+##########################
+*.iml
+.idea/
+*.ipr
+*.iws
+out/
+.idea_modules/
+
+##########################
+## Eclipse
+##########################
+.metadata
+.classpath
+.project
+.settings/
+bin/
+tmp/
+build/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+*.pydevproject
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+.settings/
+WebContent/META-INF/
+WebContent/WEB-INF/
+
+/src/main/resources/rebel.xml
+# External tool builders
+.externalToolBuilders/
+ 
+# Locally stored "Eclipse launch configurations"
+*.launch
+ 
+# CDT-specific
+.cproject
+ 
+# PDT-specific
+.buildpath
+
+
+##########################
+## NetBeans
+##########################
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+##########################
+## OS X
+##########################
+.DS_Store
