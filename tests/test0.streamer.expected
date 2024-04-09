@@ -1,0 +1,11 @@
+Program parsed correctly!
+---------------------------
+--------Printing AST-------
+---------------------------
+Program
+    Function List
+    Statement List
+        Declaration statement: two
+            Type: num
+        Assignment statement: two
+            Number: 2.0

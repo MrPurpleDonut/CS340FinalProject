@@ -1,0 +1,28 @@
+Program parsed correctly!
+---------------------------
+--------Printing AST-------
+---------------------------
+Program
+    Function List
+        Function declaration: sum
+            Type: num
+            Parameter List
+                Parameter: nums
+                    Type: list
+                        Type: num
+            Statement List
+                Declaration statement: result
+                    Type: num
+                    Assignment statement: result
+                        Number: 0.0
+                For Statement: n
+                    Type: num
+                    Identifier: nums
+                    Statement List
+                        Assignment statement: result
+                            Binary operator '+'
+                                Identifier: result
+                                Identifier: n
+                Return Statement
+                    Identifier: result
+    Statement List

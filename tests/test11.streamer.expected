@@ -1,0 +1,24 @@
+Program parsed correctly!
+---------------------------
+--------Printing AST-------
+---------------------------
+Program
+    Function List
+    Statement List
+        Declaration statement: contents
+            Type: text
+            File Read into variable: contents
+                List Access
+                    Identifier: args
+                    Number: 0.0
+        Statement as Expression
+            Function call: replaceAll
+                Expression List
+                    Identifier: contents
+                    Quoted string: "teh"
+                    Quoted string: "the"
+        File Write Statement
+            Identifier: contents
+            List Access
+                Identifier: args
+                Number: 0.0

@@ -1,0 +1,10 @@
+text file1data << args[0];
+text file2data << args[1];
+if (file1data == file2data)
+{
+  print "A match!";
+}
+else
+{
+  print "Different!";
+}

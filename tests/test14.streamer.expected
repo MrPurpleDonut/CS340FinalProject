@@ -1,0 +1,53 @@
+Program parsed correctly!
+---------------------------
+--------Printing AST-------
+---------------------------
+Program
+    Function List
+        Function declaration: sum
+            Type: num
+            Parameter List
+                Parameter: nums
+                    Type: list
+                        Type: num
+            Statement List
+                Declaration statement: result
+                    Type: num
+                    Assignment statement: result
+                        Number: 0.0
+                For Statement: n
+                    Type: num
+                    Identifier: nums
+                    Statement List
+                        Assignment statement: result
+                            Binary operator '+'
+                                Identifier: result
+                                Identifier: n
+                Return Statement
+                    Identifier: result
+        Function declaration: printResult
+            Type: void
+            Parameter List
+                Parameter: result
+                    Type: num
+                Parameter: start
+                    Type: text
+            Statement List
+                Print Statement
+                    Binary operator '+'
+                        Binary operator '+'
+                            Identifier: start
+                            Quoted string: "\n"
+                        Identifier: result
+    Statement List
+        Statement as Expression
+            Function call: printResult
+                Expression List
+                    Function call: sum
+                        Expression List
+                            Expression List
+                                Number: 86.0
+                                Number: 7.0
+                                Number: 5.0
+                                Number: 309.0
+                            Quoted string: "Result"

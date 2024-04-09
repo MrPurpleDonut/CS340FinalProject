@@ -1,0 +1,16 @@
+funk num sum(list<num> nums)
+{
+  num result = 0;
+  for (num n : nums)
+  {
+    result = result + n;
+  }
+  return result;
+}
+
+funk void printResult(num result, text start)
+{
+  print start + "\n" + result;
+}
+
+printResult(sum({86, 7, 5, 309}, "Result"));

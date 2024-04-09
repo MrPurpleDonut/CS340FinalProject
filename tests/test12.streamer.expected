@@ -1,0 +1,29 @@
+Program parsed correctly!
+---------------------------
+--------Printing AST-------
+---------------------------
+Program
+    Function List
+    Statement List
+        Declaration statement: file1data
+            Type: text
+            File Read into variable: file1data
+                List Access
+                    Identifier: args
+                    Number: 0.0
+        Declaration statement: file2data
+            Type: text
+            File Read into variable: file2data
+                List Access
+                    Identifier: args
+                    Number: 1.0
+        If Statement
+            Binary operator '=='
+                Identifier: file1data
+                Identifier: file2data
+            Statement List
+                Print Statement
+                    Quoted string: "A match!"
+            Statement List
+                Print Statement
+                    Quoted string: "Different!"

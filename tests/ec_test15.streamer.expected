@@ -1,0 +1,35 @@
+Program parsed correctly!
+---------------------------
+--------Printing AST-------
+---------------------------
+Program
+    Function List
+    Statement List
+        Switch Statement
+            List Access
+                Identifier: args
+                Number: 0.0
+            Case List
+                Case
+                    Quoted string: "Monday"
+                    Print Statement
+                        Quoted string: "A bit tired; the week is just beginning."
+                Case
+                    Quoted string: "Thursday"
+                    Print Statement
+                        Quoted string: "Almost done with the week!"
+                Case
+                    Quoted string: "Friday"
+                    Print Statement
+                        Quoted string: "The weekend is here!"
+                Case
+                    Quoted string: "Saturday"
+                    Print Statement
+                        Quoted string: "Still enjoying the weekend!"
+                Case
+                    Quoted string: "Sunday"
+                    Print Statement
+                        Quoted string: "We start all over tomorrow..."
+                Default Case
+                    Print Statement
+                        Quoted string: "Just an ordinary day."

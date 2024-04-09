@@ -1,0 +1,19 @@
+Program parsed correctly!
+---------------------------
+--------Printing AST-------
+---------------------------
+Program
+    Function List
+    Statement List
+        Declaration statement: contents
+            Type: text
+            File Read into variable: contents
+                Quoted string: "/path/to/file"
+        Error Statement
+            Statement List
+                Print Statement
+                    Quoted string: "No such file"
+                Exit Statement
+                    Number: 1.0
+        Print Statement
+            Identifier: contents

@@ -1,0 +1,16 @@
+switch (args[0])
+{
+  case "Monday":
+    print "A bit tired; the week is just beginning.";
+  case "Thursday":
+    print "Almost done with the week!";
+  case "Friday":
+    print "The weekend is here!";
+  case "Saturday":
+    print "Still enjoying the weekend!";
+  case "Sunday":
+    print "We start all over tomorrow...";
+  default:
+    print "Just an ordinary day.";
+}
+

@@ -1,0 +1,2 @@
+text myStr = "This is line one with \"quotes inside\". \n This is line two.";
+print myStr;

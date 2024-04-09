@@ -1,0 +1,7 @@
+funk void printFile(text path)
+{
+  text contents << path;
+  print contents;
+}
+
+printFile(input "Enter file path: ");

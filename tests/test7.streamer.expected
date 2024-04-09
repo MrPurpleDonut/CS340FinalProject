@@ -1,0 +1,24 @@
+Program parsed correctly!
+---------------------------
+--------Printing AST-------
+---------------------------
+Program
+    Function List
+        Function declaration: printFile
+            Type: void
+            Parameter List
+                Parameter: path
+                    Type: text
+            Statement List
+                Declaration statement: contents
+                    Type: text
+                    File Read into variable: contents
+                        Identifier: path
+                Print Statement
+                    Identifier: contents
+    Statement List
+        Statement as Expression
+            Function call: printFile
+                Expression List
+                    Input expression
+                        Quoted string: "Enter file path: "

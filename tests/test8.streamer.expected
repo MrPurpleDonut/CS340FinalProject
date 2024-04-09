@@ -1,0 +1,18 @@
+Program parsed correctly!
+---------------------------
+--------Printing AST-------
+---------------------------
+Program
+    Function List
+    Statement List
+        Until Statement
+            Declaration statement: filecontents
+                Type: text
+                File Read into variable: filecontents
+                    Input expression
+                        Quoted string: "Enter file: "
+            Statement List
+                Print Statement
+                    Quoted string: "Invalid file"
+        Print Statement
+            Identifier: filecontents

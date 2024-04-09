@@ -1,0 +1,6 @@
+until text filecontents << input "Enter file: ";
+{
+  print "Invalid file";
+}
+
+print filecontents;
