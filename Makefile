@@ -43,6 +43,9 @@ Parser.java: Streamer.cup
 ast/stamp: ast
 	$(MAKE) -C ast
 
+Interpreter.class: Interpreter.java
+	$(JAVAC) $(JFLAGS) Interpreter.java
+
 clean:
 	rm -f *~ *.class Yylex.java sym.java Parser.java
 	$(MAKE) -C ast clean

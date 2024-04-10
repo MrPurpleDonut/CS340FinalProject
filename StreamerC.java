@@ -36,6 +36,40 @@ public class StreamerC {
     private static void printAST(ASTNode node) {
         printAST(node, "");
     }
+    
+
+    /**
+     *This method parses a program and returns AST with program
+     *@param file String with the name of the file being parsed
+     */
+    public static ProgramNode parseProgram(String file){
+        try {
+            Yylex scanner = new Yylex(new FileReader(file));
+            Parser parser = new Parser(scanner);
+
+            try {
+                // the parser returns a Symbol whose value instance variable
+                // is the root nonterminal of the abstract syntax tree
+                Symbol root = parser.parse();
+                System.out.println("Program parsed correctly!");
+                if (root.value instanceof ASTNode) {
+                    return (ProgramNode)root.value;
+                }
+                else {
+                    System.out.println("Ignoring invalid AST for printing...");
+                }
+            }
+            catch (Exception e) {
+                System.err.println("Parsing threw an exception!");
+                e.printStackTrace();
+                System.exit(1);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public static void main(String argv[]) {    
         try {
