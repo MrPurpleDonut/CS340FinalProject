@@ -21,6 +21,10 @@ public class FunctionNode extends ASTNode {
         this.children.add(params);
         this.children.add(body);
     }
+    
+    public String getName(){
+        return this.name;
+    }
 
     @Override
     public String toString() {
