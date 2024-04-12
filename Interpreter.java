@@ -37,9 +37,24 @@ public class Interpreter{
                 System.exit(1);
             }
             functionTable.put(node.getName(), node);
+
         }
+        //TypeExpressionPair is a class with a String for the type and ExpressionNode for the value
+        Map<String, TypeExpressionPair> globalTable = new HashMap<String, TypeExpressionPair>();
+        
+        //List of Contexts:
+        //Global Table always at index 0
+        //Add context specific table to the end
+        //Always start searching at the last table 
+        //Always remove the table when the context is over
+        List<Map<String, TypeExpressionPair>> symbolTableList = new ArrayList<Map<String, TypeExpressionPair>>();
+        symbolTableList.add(0, globalTable);
 
-
+        //TODO:Create run method for StatementNode - abstract method implimented by each specific one
+        //TODO:Create evaluate method for expression Node - no abstract method so we can return types
+        //TODO:Iterate through Statement list calling run(symbolTableList, functionList) on each
     }
+    
+    
 
 }
