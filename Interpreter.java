@@ -51,6 +51,7 @@ public class Interpreter{
         symbolTableList.add(0, globalTable);
 
         //TODO:Create run method for StatementNode - abstract method implimented by each specific one
+        //TODO:For each specific node, have it throw UnsupportedOperationException so we know we haven't implimented
         //TODO:Create evaluate method for expression Node - no abstract method so we can return types
         //TODO:Iterate through Statement list calling run(symbolTableList, functionList) on each
     }
