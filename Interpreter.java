@@ -49,10 +49,24 @@ public class Interpreter{
         //Always remove the table when the context is over
         List<Map<String, TypeExpressionPair>> symbolTableList = new ArrayList<Map<String, TypeExpressionPair>>();
         symbolTableList.add(0, globalTable);
+        
+        Iterator<ASTNode> stmtIter = statementList.childrenIter().iterator();
+        while(stmtIter.hasNext()){
+            StatementNode statement = (StatementNode) stmtIter.next();
+            try{
+                statement.run(symbolTableList, functionTable);
+            }catch(Exception e){
+                System.err.println("Error running program");
+                e.printStackTrace();
+                System.exit(1);
+            }
+        }
 
         //TODO:Create run method for StatementNode - abstract method implimented by each specific one
         //TODO:Create evaluate method for expression Node - no abstract method so we can return types
-        //TODO:Iterate through Statement list calling run(symbolTableList, functionList) on each
+        //TODO: Change toString method for some of the ExpressionNodes so
+        //the method better represents the value so we can print easier
+        //Call evaluate(...) on the node first, then print it out
     }
     
     
