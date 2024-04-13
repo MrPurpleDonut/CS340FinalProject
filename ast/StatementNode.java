@@ -3,6 +3,11 @@
  *
  * @author Peter Ohmann + <your name here>
  */
+import java.util.*;
+
 public abstract class StatementNode extends ASTNode {
+
+    public abstract void run(List<Map<String, TypeExpressionPair>> symbolTables,
+            Map<String, FunctionNode> functionTable);
     // There are more specific types of statements, so see subclasses...
 }
