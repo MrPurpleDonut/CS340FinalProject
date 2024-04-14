@@ -48,6 +48,14 @@ public class DeclarationStatementNode extends StatementNode {
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
         //TODO: Implement run
-        throw new UnsupportedOperationException("Not yet implemented");
+        Map<String, TypeExpressionPair> context =
+            symbolTableList.get(symbolTableList.size()-1);
+
+        if(context.containsKey(this.varName)){
+            throw new IllegalStateException("Error: variable " + this.varName + " is already instantiated");
+        }   else{
+        
+            context.put(this.varName, new TypeExpressionPair(this.varType, null));
+        }
     }
 }

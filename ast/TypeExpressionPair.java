@@ -3,15 +3,15 @@
      *expression together in our map
      */
     public class TypeExpressionPair{
-        private String type;
+        private TypeNode type;
         private ExpressionNode node;
         
         /**
          *Constructor
-         *@param type String with the type
+         *@param type TypeNode with the type
          *@param node ExpressionNode with value
          */
-        public TypeExpressionPair(String type, ExpressionNode node){
+        public TypeExpressionPair(TypeNode type, ExpressionNode node){
             this.type = type;
             this.node = node;
         }
@@ -19,15 +19,15 @@
         //Shouldn't need to change the type, so no setter
         //To update value of a variable, we can replace the node it contains
 
-        public String getType(){
+        public TypeNode getType(){
             return this.type;
         }
 
-        public ExpressionNode getNode(){
+        public ExpressionNode getValue(){
             return this.node;
         }
 
-        public void setNode(ExpressionNode node){
+        public void setValue(ExpressionNode node){
             this.node = node;
         }
 
