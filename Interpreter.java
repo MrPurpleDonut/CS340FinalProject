@@ -63,7 +63,9 @@ public class Interpreter{
         }
 
         //TODO:Create run method for StatementNode - abstract method implimented by each specific one
-        //TODO:Create evaluate method for expression Node - no abstract method so we can return types
+        //TODO:Create evaluate method for expression Node - returns an ExpressionNode
+        //For basic nodes (NumExpressionNode, etc..) return self, otherwise return simplified nodes
+        //Then we can impliment abstract method and have each class implemenet it
         //TODO: Change toString method for some of the ExpressionNodes so
         //the method better represents the value so we can print easier
         //Call evaluate(...) on the node first, then print it out
