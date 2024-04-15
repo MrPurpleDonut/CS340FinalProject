@@ -8,19 +8,12 @@ import java.util.*;
 public class Interpreter{
 
     public static void main(String[] args){
-        run(args[0]);
-    }
-
-    /**
-     *This method controls and runs the Interpreter
-     *@param file String with the name of the file to interpret
-     */
-    private static void run(String file){
-        ProgramNode program = StreamerC.parseProgram(file);
+        ProgramNode program = StreamerC.parseProgram(args[0]);
         if(program == null){
             System.err.println("Error parsing program");
             System.exit(1);
         }
+
         
         Iterator<ASTNode> programChildren = program.childrenIter().iterator();
         FunctionListNode functionList = (FunctionListNode)programChildren.next();
@@ -69,8 +62,9 @@ public class Interpreter{
         //TODO: Change toString method for some of the ExpressionNodes so
         //the method better represents the value so we can print easier
         //Call evaluate(...) on the node first, then print it out
+
     }
-    
+
     
 
 }

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -cp ".:./ast:/usr/people/classes/CS340/software/*" Interpreter $1
+java -cp ".:./ast:/usr/people/classes/CS340/software/*" Interpreter "$@"
