@@ -23,13 +23,17 @@ public class NumExpressionNode extends ExpressionNode {
         }
     }
 
+    public NumExpressionNode(double value){
+        this.value = value;
+    }
+
     public double getValue() {
         return this.value;
     }
 
     @Override
     public String toString() {
-        return "Number: " + this.value;
+        return "" + this.value;
     }
     /**
      *This method evaluates this node and returns the expression after evaluating

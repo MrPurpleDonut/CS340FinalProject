@@ -27,10 +27,14 @@ public class PrintStatementNode extends StatementNode {
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
         //TODO: Change toString method for some of the ExpressionNodes so
         //the method better represents the value so we can print easier
         //Call evaluate(...) on the node first, then print it out
-        throw new UnsupportedOperationException("Not yet implemented");
+        
+        Iterator<ASTNode> iterator = this.childrenIter().iterator();
+        ExpressionNode child = (ExpressionNode) iterator.next();
+        child = child.evaluate(symbolTableList, functionTable);
+
+        System.out.println(child);
     }
 }

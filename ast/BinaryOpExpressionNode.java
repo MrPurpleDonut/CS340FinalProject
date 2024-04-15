@@ -36,6 +36,19 @@ public class BinaryOpExpressionNode extends ExpressionNode {
     @Override
     public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        throw new UnsupportedOperationException("Not yet implemented");
+        //TODO: Add supported for more binary operations
+        ExpressionNode leftOp = left.evaluate(symbolTableList, functionTable);
+        ExpressionNode rightOp = right.evaluate(symbolTableList, functionTable);
+        
+        switch(this.operator){
+            case "+":
+               if(leftOp instanceof NumExpressionNode && right instanceof NumExpressionNode){
+                double val = ((NumExpressionNode)leftOp).getValue() + ((NumExpressionNode)rightOp).getValue();
+                return new NumExpressionNode(val);
+               }
+                throw new IllegalArgumentException("Plus expected types num and num");
+            default:
+                throw new UnsupportedOperationException("Not yet implemented");
+        }
     }
 }

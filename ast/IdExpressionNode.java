@@ -26,6 +26,20 @@ public class IdExpressionNode extends ExpressionNode {
     @Override
     public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        throw new UnsupportedOperationException("Not yet implemented");
+        
+        boolean exists = false;
+        Map<String, TypeExpressionPair> context = symbolTableList.get(0);
+        for(int i = symbolTableList.size()-1; i>=0; i--){
+           context = symbolTableList.get(i);
+           if(context.containsKey(this.value)){
+            exists = true;
+            break;
+           }
+        }
+        if(!exists){
+            throw new IllegalStateException("Error: id "+this.value+" doesn't exist");
+        }
+        return context.get(this.value).getValue();
+
     }
 }
