@@ -5,4 +5,7 @@
  */
 public abstract class ExpressionNode extends ASTNode {
     // There are more specific types of expressions, so see subclasses...
+    
+
+    public abstract ExpressionNode evaluate();
 }

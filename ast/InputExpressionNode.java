@@ -16,4 +16,13 @@ public class InputExpressionNode extends ExpressionNode {
     public String toString() {
         return "Input expression";
     }
+    /**
+     *This method evaluates this node and returns the expression after evaluating
+     *@return ExpressionNode with the simplified expression
+     *@throws UnsupportedOperationException
+     */
+    @Override
+    public ExpressionNode evaluate(){
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }
