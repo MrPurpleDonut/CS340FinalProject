@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * This class represents a list filter operation (expression[? expression ?])
  * in the AST.
@@ -27,7 +29,8 @@ public class ListFilterExpressionNode extends ExpressionNode {
      *@throws UnsupportedOperationException
      */
     @Override
-    public ExpressionNode evaluate(){
+    public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
+            Map<String, FunctionNode> functionTable){
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

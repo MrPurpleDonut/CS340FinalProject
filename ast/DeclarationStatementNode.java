@@ -42,12 +42,10 @@ public class DeclarationStatementNode extends StatementNode {
      *@param symbolTableList list with the symbol tables in order from least
      *to most specific
      *@param functionTable map with the functions
-     *@throws UnsupportedOperationException not yet implemented
      */
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
         Map<String, TypeExpressionPair> context =
             symbolTableList.get(symbolTableList.size()-1);
 
@@ -57,5 +55,13 @@ public class DeclarationStatementNode extends StatementNode {
         
             context.put(this.varName, new TypeExpressionPair(this.varType, null));
         }
+
+        //Checking if has assignment
+        Iterator<ASTNode> iterator = this.childrenIter().iterator();
+        iterator.next();
+        if(iterator.hasNext()){
+            ((StatementNode) iterator.next()).run(symbolTableList, functionTable);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 import java_cup.runtime.*;
+import java.util.*;
 
 /**
  * This class represents an identifier (as an expression in the AST).
@@ -23,7 +24,8 @@ public class IdExpressionNode extends ExpressionNode {
      *@throws UnsupportedOperationException
      */
     @Override
-    public ExpressionNode evaluate(){
+    public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
+            Map<String, FunctionNode> functionTable){
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

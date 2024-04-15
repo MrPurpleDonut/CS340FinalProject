@@ -1,4 +1,6 @@
 import java_cup.runtime.*;
+import java.util.*;
+
 
 /**
  * This class represents a boolean literal (either true or false).
@@ -27,7 +29,8 @@ public class BooleanLiteralExpressionNode extends ExpressionNode {
      *@throws UnsupportedOperationException
      */
     @Override
-    public ExpressionNode evaluate(){
+    public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
+            Map<String, FunctionNode> functionTable){
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

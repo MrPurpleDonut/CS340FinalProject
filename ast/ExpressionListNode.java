@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * This class represents an Expression List in the AST.
  *
@@ -37,7 +39,8 @@ public class ExpressionListNode extends ExpressionNode {
      *@throws UnsupportedOperationException
      */
     @Override
-    public ExpressionNode evaluate(){
+    public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
+            Map<String, FunctionNode> functionTable){
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

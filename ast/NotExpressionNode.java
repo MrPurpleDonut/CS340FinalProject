@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * This class represents a unary operation NOT in the AST.
  *
@@ -22,7 +24,8 @@ public class NotExpressionNode extends ExpressionNode {
      *@throws UnsupportedOperationException
      */
     @Override
-    public ExpressionNode evaluate(){
+    public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
+            Map<String, FunctionNode> functionTable){
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

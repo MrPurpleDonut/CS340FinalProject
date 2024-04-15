@@ -1,4 +1,5 @@
 import java_cup.runtime.*;
+import java.util.*;
 
 /**
  * This class represents a number (as an expression in the AST).
@@ -33,10 +34,10 @@ public class NumExpressionNode extends ExpressionNode {
     /**
      *This method evaluates this node and returns the expression after evaluating
      *@return ExpressionNode with the simplified expression
-     *@throws UnsupportedOperationException
      */
     @Override
-    public ExpressionNode evaluate(){
-        throw new UnsupportedOperationException("Not yet implemented");
+    public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
+            Map<String, FunctionNode> functionTable){
+        return this;
     }
 }

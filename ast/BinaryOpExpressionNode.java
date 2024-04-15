@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * This class represents a binary operation (such as plus, minus, etc.) in the
  * AST.
@@ -32,7 +34,8 @@ public class BinaryOpExpressionNode extends ExpressionNode {
      *@throws UnsupportedOperationException
      */
     @Override
-    public ExpressionNode evaluate(){
+    public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
+            Map<String, FunctionNode> functionTable){
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }
