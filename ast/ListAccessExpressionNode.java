@@ -61,7 +61,7 @@ public class ListAccessExpressionNode extends ExpressionNode {
         }
         TypeNode listType = (TypeNode)iter.next();
 
-        int index = (int) ((NumExpressionNode) pos).getValue();
+        int index = (int)(double) ((NumExpressionNode) pos).getValue();
 
         switch(listType.getTypeName()){
 

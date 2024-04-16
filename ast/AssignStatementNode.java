@@ -35,11 +35,6 @@ public class AssignStatementNode extends StatementNode {
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
 
-
-        Iterator<ASTNode> iterator = this.childrenIter().iterator();
-        ExpressionNode child = (ExpressionNode) iterator.next();
-        child = child.evaluate(symbolTableList, functionTable);
-
         //Making sure variable already exists, else throw an exception
         //Also getting the specific context
         boolean exists = false;
@@ -58,7 +53,39 @@ public class AssignStatementNode extends StatementNode {
 
         TypeExpressionPair variable = context.get(this.id);
 
-        //Type Checking
+
+        Iterator<ASTNode> iterator = this.childrenIter().iterator();
+        ExpressionNode child = (ExpressionNode) iterator.next();
+        if(child instanceof ExpressionListNode){
+           //Handling lists
+            TypeNode listTypeParent = variable.getType();
+        
+
+             Iterator<ASTNode> iter = listTypeParent.childrenIter().iterator();
+            if(!iter.hasNext()){
+                throw new IllegalStateException("Error accessing type of list");
+            }
+            TypeNode listType = (TypeNode)iter.next();
+            ExpressionListNode expList = (ExpressionListNode) child;
+            switch(listType.getTypeName()){
+                case "text":
+                  child = new ListExpressionNode<String>(expList);
+                  break;
+                case "num":
+                  child = new ListExpressionNode<Double>(expList);
+                  break;
+                case "bool":
+                  child = new ListExpressionNode<Boolean>(expList);
+                  break;
+
+            }
+            variable.setValue(child);
+            return;
+        }else{
+            child = child.evaluate(symbolTableList, functionTable);
+        }
+
+        //TypeChecking
         switch(variable.getType().getTypeName()) {
 
             case "num":
@@ -78,9 +105,6 @@ public class AssignStatementNode extends StatementNode {
                     throw new IllegalStateException("Error: variable "+this.id+"intialized as bool");
                 }
                 break;
-
-            case "list":
-                throw new UnsupportedOperationException("List type not yet implemented");
 
             default:
                 throw new IllegalStateException("Error: unrecongnized type");

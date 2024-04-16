@@ -27,7 +27,7 @@ public class NumExpressionNode extends ExpressionNode {
         this.value = value;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return this.value;
     }
 

@@ -15,7 +15,7 @@ public class BooleanLiteralExpressionNode extends ExpressionNode {
         this.value = val;
     }
 
-    public boolean getValue() {
+    public Boolean getValue() {
         return this.value;
     }
 

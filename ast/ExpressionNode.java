@@ -11,4 +11,8 @@ public abstract class ExpressionNode extends ASTNode {
 
     public abstract ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable);
+
+    public Object getValue(){
+        return null;
+    }
 }

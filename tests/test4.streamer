@@ -1,1 +1,4 @@
 list<text> arrOfStrings = {"Hello", "there", "friends"};
+print arrOfStrings[0];
+print arrOfStrings[1];
+print arrOfStrings[2];

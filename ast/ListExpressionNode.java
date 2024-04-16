@@ -14,6 +14,15 @@ public class ListExpressionNode<T> extends ExpressionNode {
         this.list = list;
     }
 
+    public ListExpressionNode(ExpressionListNode e){
+        List<T> list = new ArrayList<T>();
+        Iterator<ASTNode> iter = e.childrenIter().iterator();
+        while(iter.hasNext()){
+            list.add((T) ((ExpressionNode)iter.next()).getValue());
+        }
+        this.list = list;
+    }
+
     @Override
     public String toString() {
         return list.toString();
