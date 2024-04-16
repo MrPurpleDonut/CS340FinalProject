@@ -16,7 +16,7 @@ public class IdExpressionNode extends ExpressionNode {
 
     @Override
     public String toString() {
-        return "Identifier: " + this.value;
+        return this.value;
     }
     /**
      *This method evaluates this node and returns the expression after evaluating

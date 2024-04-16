@@ -16,7 +16,7 @@ public class StringExpressionNode extends ExpressionNode {
 
     @Override
     public String toString() {
-        return "Quoted string: " + this.value;
+        return this.value;
     }
 
     public String getValue(){
