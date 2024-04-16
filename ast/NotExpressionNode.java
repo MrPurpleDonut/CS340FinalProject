@@ -26,6 +26,10 @@ public class NotExpressionNode extends ExpressionNode {
     @Override
     public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        throw new UnsupportedOperationException("Not yet implemented");
+        ExpressionNode val = this.negatedValue.evaluate(symbolTableList, functionTable);
+        if(!(val instanceof BooleanLiteralExpressionNode)){
+            throw new IllegalArgumentException("Error: type was not boolean for not operator");
+        }
+        return new BooleanLiteralExpressionNode(!((BooleanLiteralExpressionNode)val).getValue());
     }
 }

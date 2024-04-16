@@ -39,14 +39,44 @@ public class BinaryOpExpressionNode extends ExpressionNode {
         //TODO: Add supported for more binary operations
         ExpressionNode leftOp = left.evaluate(symbolTableList, functionTable);
         ExpressionNode rightOp = right.evaluate(symbolTableList, functionTable);
-        
+
         switch(this.operator){
             case "+":
-               if(leftOp instanceof NumExpressionNode && right instanceof NumExpressionNode){
-                double val = ((NumExpressionNode)leftOp).getValue() + ((NumExpressionNode)rightOp).getValue();
-                return new NumExpressionNode(val);
+               if(leftOp instanceof NumExpressionNode && rightOp instanceof NumExpressionNode){
+                double plusVal = ((NumExpressionNode)leftOp).getValue() + ((NumExpressionNode)rightOp).getValue();
+                return new NumExpressionNode(plusVal);
                }
                 throw new IllegalArgumentException("Plus expected types num and num");
+            case "-":
+               if(leftOp instanceof NumExpressionNode && rightOp instanceof NumExpressionNode){
+                double minusVal = ((NumExpressionNode)leftOp).getValue() - ((NumExpressionNode)rightOp).getValue();
+                return new NumExpressionNode(minusVal);
+               }
+                throw new IllegalArgumentException("Minus expected types num and num");
+            case "*":
+               if(leftOp instanceof NumExpressionNode && rightOp instanceof NumExpressionNode){
+                double timesVal = ((NumExpressionNode)leftOp).getValue() * ((NumExpressionNode)rightOp).getValue();
+                return new NumExpressionNode(timesVal);
+               }
+                throw new IllegalArgumentException("Times expected types num and num");
+            case "/":
+               if(leftOp instanceof NumExpressionNode && rightOp instanceof NumExpressionNode){
+                double divVal = ((NumExpressionNode)leftOp).getValue() / ((NumExpressionNode)rightOp).getValue();
+                return new NumExpressionNode(divVal);
+               }
+                throw new IllegalArgumentException("Divide expected types num and num");
+            case "||":
+               if(leftOp instanceof BooleanLiteralExpressionNode && rightOp instanceof BooleanLiteralExpressionNode){
+                boolean orVal = ((BooleanLiteralExpressionNode)leftOp).getValue() || ((BooleanLiteralExpressionNode)rightOp).getValue();
+                return new BooleanLiteralExpressionNode(orVal);
+               }
+                throw new IllegalArgumentException("Or expected types bool and bool");
+            case "&&":
+               if(leftOp instanceof BooleanLiteralExpressionNode && rightOp instanceof BooleanLiteralExpressionNode){
+                boolean andVal = ((BooleanLiteralExpressionNode)leftOp).getValue() && ((BooleanLiteralExpressionNode)rightOp).getValue();
+                return new BooleanLiteralExpressionNode(andVal);
+               }
+                throw new IllegalArgumentException("And expected types bool and bool");
             default:
                 throw new UnsupportedOperationException("Not yet implemented");
         }

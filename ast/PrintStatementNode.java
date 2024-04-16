@@ -35,6 +35,6 @@ public class PrintStatementNode extends StatementNode {
         ExpressionNode child = (ExpressionNode) iterator.next();
         child = child.evaluate(symbolTableList, functionTable);
 
-        System.out.println(child);
+        System.out.println(child.toString());
     }
 }
