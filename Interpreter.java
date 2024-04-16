@@ -13,7 +13,12 @@ public class Interpreter{
             System.err.println("Error parsing program");
             System.exit(1);
         }
-
+        
+        //Getting any other program arguments
+        List<String> argList = new ArrayList<String>();
+        for(int i = 1; i < args.length; i++){
+            argList.add(args[i]);
+        }
         
         Iterator<ASTNode> programChildren = program.childrenIter().iterator();
         FunctionListNode functionList = (FunctionListNode)programChildren.next();
@@ -34,7 +39,10 @@ public class Interpreter{
         }
         //TypeExpressionPair is a class with a String for the type and ExpressionNode for the value
         Map<String, TypeExpressionPair> globalTable = new HashMap<String, TypeExpressionPair>();
-        
+        TypeExpressionPair argListType = new TypeExpressionPair(new ListTypeNode(new TypeNode("text")), new ListExpressionNode<String>(argList));
+        globalTable.put("args", argListType);
+
+
         //List of Contexts:
         //Global Table always at index 0
         //Add context specific table to the end
