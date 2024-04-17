@@ -6,7 +6,7 @@ import java.util.*;
  *
  * @author Peter Ohmann + <your name here>
  */
-public class NumExpressionNode extends ExpressionNode {
+public class NumExpressionNode extends PrimitiveExpressionNode {
     private double value;
 
     public NumExpressionNode(String text) {

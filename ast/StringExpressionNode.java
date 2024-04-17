@@ -6,7 +6,7 @@ import java.util.*;
  *
  * @author Peter Ohmann
  */
-public class StringExpressionNode extends ExpressionNode {
+public class StringExpressionNode extends PrimitiveExpressionNode {
     private String value;
 
     public StringExpressionNode(String qstring) {

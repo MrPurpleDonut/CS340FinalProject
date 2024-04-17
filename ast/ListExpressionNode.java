@@ -18,7 +18,7 @@ public class ListExpressionNode<T> extends ExpressionNode {
         List<T> list = new ArrayList<T>();
         Iterator<ASTNode> iter = e.childrenIter().iterator();
         while(iter.hasNext()){
-            list.add((T) ((ExpressionNode)iter.next()).getValue());
+            list.add((T) ((PrimitiveExpressionNode)iter.next()).getValue());
         }
         this.list = list;
     }

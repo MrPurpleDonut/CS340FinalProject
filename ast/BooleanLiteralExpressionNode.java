@@ -7,7 +7,7 @@ import java.util.*;
  *
  * @author Peter Ohmann
  */
-public class BooleanLiteralExpressionNode extends ExpressionNode {
+public class BooleanLiteralExpressionNode extends PrimitiveExpressionNode {
     private boolean value;
 
     public BooleanLiteralExpressionNode(boolean val) {
