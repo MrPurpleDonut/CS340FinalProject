@@ -247,7 +247,8 @@ default
     }
 \"(\\.|[^\\\"])*\"
     {
-        return makeSym(sym.QSTRING, yytext());
+        String text = yytext().replaceAll("\\\\n", "\n").replaceAll("\\\\", "");
+        return makeSym(sym.QSTRING, text.substring(1, text.length()-1));
     }
 {LETTER}({LETTER}|{DIGIT})*
     {

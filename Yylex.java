@@ -878,7 +878,8 @@ private Symbol makeSym(int type) {
             // fall through
           case 86: break;
           case 33: 
-            { return makeSym(sym.QSTRING, yytext());
+            { String text = yytext().replaceAll("\\\\n", "\n").replaceAll("\\\\", "");
+        return makeSym(sym.QSTRING, text.substring(1, text.length()-1));
             } 
             // fall through
           case 87: break;
