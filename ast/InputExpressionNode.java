@@ -27,7 +27,10 @@ public class InputExpressionNode extends ExpressionNode {
             Map<String, FunctionNode> functionTable){
 	console = new Scanner(System.in);
 	ExpressionNode p = prompt.evaluate(symbolTableList, functionTable);
-	System.out.println(p.getValue());
+	if (!(p instanceof StringExpressionNode)){
+	    throw new IllegalArgumentException("Must give valid String prompt for input!");
+	}
+	System.out.println((StringExpressionNode)p.getValue());
 	return new StringExpressionNode(console.next());
     }
 }

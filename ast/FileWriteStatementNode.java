@@ -37,6 +37,9 @@ public class FileWriteStatementNode extends StatementNode {
         //Not totally sure if we should call evaluate on the children of this statement or on the instance variables
 	ExpressionNode c = contents.evaluate(symbolTableList, functionTable);
 	ExpressionNode f = filePath.evaluate(symbolTableList, functionTable);
+	if (!(c instanceof StringExpressionNode) || !(f instanceof StringExpressionNode)){
+	    throw new IllegalArgumentException("Must provide valid String contents and File Path!");
+	}
 	String write = ((StringExpressionNode)c).getValue();
 	String path = ((StringExpressionNode)f).getValue();
 	try {
