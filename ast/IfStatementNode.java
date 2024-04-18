@@ -37,12 +37,19 @@ public class IfStatementNode extends StatementNode {
      *@param symbolTableList list with the symbol tables in order from least
      *to most specific
      *@param functionTable map with the functions
-     *@throws UnsupportedOperationException not yet implemented
      */
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
-        throw new UnsupportedOperationException("Not yet implemented");
+	ExpressionNode bool = condition.evaluate(symbolTableList, functionTable);
+	if (!(bool instanceof BooleanLiteralExpressionNode)){
+	    throw new IllegalArgumentException("Provide valid Boolean Expression for if conditional");
+	}
+	if ( ((BooleanLiteralExpressionNode)bool).getValue() ){
+	    // the StatementListNode class doesn't have a run method, not totally sure how to continue to execute the statements in the body of the condition
+	    //ifBody.run();
+	} else{
+	    //elseBody.run();
+	}
     }
 }
