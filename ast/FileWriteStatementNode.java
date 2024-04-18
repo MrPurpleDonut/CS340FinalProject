@@ -1,6 +1,8 @@
 
 import java.util.*;
-
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 /**
  * This class represents a file write statement in the AST.
  *
@@ -28,12 +30,20 @@ public class FileWriteStatementNode extends StatementNode {
      *@param symbolTableList list with the symbol tables in order from least
      *to most specific
      *@param functionTable map with the functions
-     *@throws UnsupportedOperationException not yet implemented
      */
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
-        throw new UnsupportedOperationException("Not yet implemented");
+        //Not totally sure if we should call evaluate on the children of this statement or on the instance variables
+	ExpressionNode c = contents.evaluate(symbolTableList, functionTable);
+	ExpressionNode f = filePath.evaluate(symbolTableList, functionTable);
+	String write = ((StringExpressionNode)c).getValue();
+	String path = ((StringExpressionNode)f).getValue();
+	try {
+	    FileWriter out = new FileWriter(new File(path));
+	    out.append(write);
+	} catch (IOException e){
+	    e.printStackTrace();
+	}
     }
 }
