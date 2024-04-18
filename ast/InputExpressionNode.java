@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class InputExpressionNode extends ExpressionNode {
     private ExpressionNode prompt;
-
+    private Scanner console;
     public InputExpressionNode(ExpressionNode prompt) {
         super();
         this.prompt = prompt;
@@ -21,11 +21,13 @@ public class InputExpressionNode extends ExpressionNode {
     /**
      *This method evaluates this node and returns the expression after evaluating
      *@return ExpressionNode with the simplified expression
-     *@throws UnsupportedOperationException
      */
     @Override
     public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        throw new UnsupportedOperationException("Not yet implemented");
+	console = new Scanner(System.in);
+	ExpressionNode p = prompt.evaluate(symbolTableList, functionTable);
+	System.out.println(p.getValue());
+	return new StringExpressionNode(console.next());
     }
 }
