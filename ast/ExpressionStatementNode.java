@@ -28,7 +28,10 @@ public class ExpressionStatementNode extends StatementNode {
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
-        throw new UnsupportedOperationException("Not yet implemented");
+        
+        // largely the same as PrintStatementNode
+        Iterator<ASTNode> iterator = this.childrenIter().iterator();
+        ExpressionNode child = (ExpressionNode) iterator.next();
+        child = child.evaluate(symbolTableList, functionTable);
     }
 }

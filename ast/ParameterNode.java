@@ -14,6 +14,14 @@ public class ParameterNode extends ASTNode {
         this.children.add(paramType);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public TypeNode getTypeNode() {
+        return this.type;
+    }
+
     @Override
     public String toString() {
         return "Parameter: " + this.name;

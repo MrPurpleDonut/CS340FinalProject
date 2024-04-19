@@ -1,4 +1,3 @@
-import java_cup.runtime.*;
 import java.util.*;
 
 /**
@@ -8,15 +7,21 @@ import java.util.*;
  */
 public class AssignStatementNode extends StatementNode {
     private String id;
+    private ExpressionNode expressionNode;
 
     public AssignStatementNode(String id, ExpressionNode e) {
         super();
         this.id = id;
         this.children.add(e);
+        this.expressionNode = e;
     }
 
     public String getId() {
         return this.id;
+    }
+
+    public ExpressionNode getExpressionNode() {
+        return this.expressionNode;
     }
 
     @Override

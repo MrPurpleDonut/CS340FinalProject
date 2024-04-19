@@ -7,9 +7,17 @@ import java.util.*;
  * @author Peter Ohmann
  */
 public class ReturnStatementNode extends StatementNode {
+    private ExpressionNode returnExpressionNode;
+
     public ReturnStatementNode(ExpressionNode e) {
         super();
         this.children.add(e);
+        this.returnExpressionNode = e;
+
+    }
+
+    public ExpressionNode getReturnExpressionNode() {
+        return this.returnExpressionNode;
     }
 
     @Override

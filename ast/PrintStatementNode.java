@@ -35,6 +35,12 @@ public class PrintStatementNode extends StatementNode {
         ExpressionNode child = (ExpressionNode) iterator.next();
         child = child.evaluate(symbolTableList, functionTable);
 
-        System.out.println(child.toString());
+        // account for trying to print a function call that returns void
+        try {
+            System.out.println(child.toString());
+        }
+        catch(NullPointerException N) {
+            throw new IllegalStateException("Error: Cannot print a void return function");
+        }
     }
 }
