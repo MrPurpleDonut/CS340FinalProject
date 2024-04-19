@@ -30,16 +30,6 @@ public class StatementListNode extends ASTNode {
     
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable) {
-        System.out.println("running lines");
-
-        Iterator<ASTNode> iterator = this.childrenIter().iterator();
-        
-        while(iterator.hasNext()) {
-            StatementNode currentLine = (StatementNode) (iterator.next());
-            
-            // System.out.println("runing line " + currentLine.toString());
-            
-            currentLine.run(symbolTableList, functionTable);
-        }
+       Interpreter.runStatementList(symbolTableList, functionTable, this);
     }
 }

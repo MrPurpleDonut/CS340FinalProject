@@ -30,7 +30,8 @@ public class InputExpressionNode extends ExpressionNode {
 	if (!(p instanceof StringExpressionNode)){
 	    throw new IllegalArgumentException("Must give valid String prompt for input!");
 	}
-	System.out.println((StringExpressionNode)p.getValue());
-	return new StringExpressionNode(console.next());
+	System.out.println(p.getValue());
+    ExpressionNode returnValue = new StringExpressionNode(console.next());
+	return returnValue;
     }
 }

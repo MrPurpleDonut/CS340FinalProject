@@ -119,10 +119,9 @@ public class FunctionCallExpressionNode extends ExpressionNode {
             System.out.println("PARAMS ARE GOOD!");
         }
 
-        // add parameters into symbolTableList that gets passed to function being called
-        List<Map<String, TypeExpressionPair>> actualSymbolTableList = new ArrayList<Map<String, TypeExpressionPair>>(symbolTableList);
-
-        Map<String, TypeExpressionPair> context = actualSymbolTableList.get(actualSymbolTableList.size() - 1);
+        
+        Map<String, TypeExpressionPair> context = new HashMap<String, TypeExpressionPair>();
+            symbolTableList.add(context);
         
         for(int i = 0; i < callParams.size(); i++) {
             context.put(
@@ -142,7 +141,7 @@ public class FunctionCallExpressionNode extends ExpressionNode {
             // make sure return value exists
             Object returnedType = null;
             try {
-                returned = funk.getReturnValue(actualSymbolTableList, functionTable).evaluate(symbolTableList, functionTable);
+                returned = funk.getReturnValue(symbolTableList, functionTable).evaluate(symbolTableList, functionTable);
                 returnedType = returned.getValue().getClass().getSimpleName();
             }
             catch(NullPointerException N) {
@@ -173,11 +172,12 @@ public class FunctionCallExpressionNode extends ExpressionNode {
         // make sure there is no return for void functions
         else {
             try {
-                returned = funk.getReturnValue(actualSymbolTableList, functionTable).evaluate(symbolTableList, functionTable);
-
+                returned = funk.getReturnValue(symbolTableList, functionTable).evaluate(symbolTableList, functionTable);
+                symbolTableList.remove(context);
                 throw new IllegalStateException("Error: Void return function cannot have a return statement");
             }
             catch(NullPointerException N) {
+                
                 String unused = "unused";
             }
         }
@@ -186,6 +186,8 @@ public class FunctionCallExpressionNode extends ExpressionNode {
             System.out.println("==== FC DEBUG END ====");
         }
 
+
+        symbolTableList.remove(context);
         return returned;
     }
 }

@@ -52,7 +52,7 @@ public class Interpreter{
         List<Map<String, TypeExpressionPair>> symbolTableList = new ArrayList<Map<String, TypeExpressionPair>>();
         symbolTableList.add(0, globalTable);
         
-       runStatementList(symbolTableList, functionTable, statementList); 
+        statementList.run(symbolTableList, functionTable); 
 
         //TODO:Create run method for StatementNode - abstract method implimented by each specific one
         //TODO:Create evaluate method for expression Node - returns an ExpressionNode
