@@ -1,14 +1,18 @@
 import java_cup.runtime.*;
 import java.util.*;
-
+import java.io.*;
 /**
  * This class represents a file read statement in the AST.
  *
  * @author Peter Ohmann
  */
 public class FileReadStatementNode extends AssignStatementNode {
+    private String id;
+    private ExpressionNode path;
     public FileReadStatementNode(String id, ExpressionNode e) {
         super(id, e);
+        this.id = id;
+        this.path = e;
     }
 
     @Override
@@ -26,7 +30,38 @@ public class FileReadStatementNode extends AssignStatementNode {
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
-        throw new UnsupportedOperationException("Not yet implemented");
+
+        boolean exists = false;
+        Map<String, TypeExpressionPair> context = symbolTableList.get(0);
+        for(int i = symbolTableList.size()-1; i>=0; i--){
+           context = symbolTableList.get(i);
+           if(context.containsKey(this.id)){
+            exists = true;
+            break;
+           }
+        }
+
+        if(!exists){
+            throw new IllegalStateException("Error: variable "+this.id+" not intialized");
+        }
+        String inputString = "";
+        try{
+            FileReader input = new FileReader(((StringExpressionNode)
+                    this.path.evaluate(symbolTableList,functionTable))
+            .getValue());
+
+            int inputChar = input.read();
+            while(inputChar != -1){
+                inputString += ((char)inputChar);
+                inputChar = input.read();
+            }
+        }catch(IOException e){
+            throw new IllegalArgumentException("Error reading file");
+        }
+        TypeExpressionPair variable = context.get(this.id); 
+        if(!variable.getType().getTypeName().equals("text")){
+            throw new IllegalArgumentException("File read returns type text");
+        }
+        variable.setValue(new StringExpressionNode(inputString));
     }
 }

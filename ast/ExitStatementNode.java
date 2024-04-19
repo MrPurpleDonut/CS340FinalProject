@@ -7,8 +7,11 @@ import java.util.*;
  * @author Peter Ohmann
  */
 public class ExitStatementNode extends StatementNode {
+    ExpressionNode e;
+
     public ExitStatementNode(ExpressionNode e) {
         super();
+        this.e = e;
         this.children.add(e);
     }
 
@@ -27,7 +30,13 @@ public class ExitStatementNode extends StatementNode {
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
-        throw new UnsupportedOperationException("Not yet implemented");
+        try{ 
+            int val = (int)(double)
+                (((NumExpressionNode)this.e.evaluate(symbolTableList,functionTable)).getValue());
+                System.exit(val);
+        }catch(Exception e){
+            System.exit(1);
+        }
+
     }
 }

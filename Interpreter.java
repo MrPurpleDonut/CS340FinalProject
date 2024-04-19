@@ -72,8 +72,17 @@ public class Interpreter{
         while(stmtIter.hasNext()){
             StatementNode statement = (StatementNode) stmtIter.next();
             try{
-                statement.run(symbolTableList, functionTable);
+                if(!(statement instanceof ErrorStatementNode)){
+                    statement.run(symbolTableList, functionTable);
+                }
             }catch(Exception e){
+                if(stmtIter.hasNext()){
+                    statement = (StatementNode) stmtIter.next();
+                    if(statement instanceof ErrorStatementNode){
+                        statement.run(symbolTableList, functionTable);
+                        continue;
+                    }
+                }
                 System.err.println("Error running program");
                 e.printStackTrace();
                 System.exit(1);

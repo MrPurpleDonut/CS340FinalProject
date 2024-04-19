@@ -1,4 +1,4 @@
-text contents << "/path/to/file";
+text contents << "tets/input.txt";
 error
 {
   print "No such file";

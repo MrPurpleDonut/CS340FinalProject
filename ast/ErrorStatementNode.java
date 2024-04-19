@@ -7,8 +7,10 @@ import java.util.*;
  * @author Peter Ohmann
  */
 public class ErrorStatementNode extends StatementNode {
+    private StatementListNode list; 
     public ErrorStatementNode(StatementListNode l) {
         super();
+        this.list = l;
         this.children.add(l);
     }
 
@@ -27,7 +29,6 @@ public class ErrorStatementNode extends StatementNode {
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
-        throw new UnsupportedOperationException("Not yet implemented");
+        Interpreter.runStatementList(symbolTableList, functionTable, this.list);
     }
 }
