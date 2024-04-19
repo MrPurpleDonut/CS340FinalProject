@@ -78,11 +78,17 @@ public class FunctionCallExpressionNode extends ExpressionNode {
         if(this.debugMode) {
             System.out.println("--param counts match? " + String.valueOf(funkParamsCount == callParamsCount));
         }
-
+        
+        Map<String, TypeExpressionPair> context = new HashMap<String, TypeExpressionPair>();
         // make sure called parameters types and function paramter types match
         for(int i = 0; i < funkParams.size(); i++) {
             String funkParamType = funkParams.get(i).getTypeNode().getTypeName();
-            String callParamType = callParams.get(i).evaluate(symbolTableList, functionTable).getValue().getClass().getSimpleName();
+            ExpressionNode evaluate = callParams.get(i).evaluate(symbolTableList, functionTable);
+            String callParamType = evaluate.getValue().getClass().getSimpleName();
+            context.put(funkParams.get(i).getName(), 
+                new TypeExpressionPair(
+                    funkParams.get(i).getTypeNode(), 
+                    evaluate));
 
             boolean match = false;
 
@@ -120,18 +126,9 @@ public class FunctionCallExpressionNode extends ExpressionNode {
         }
 
         
-        Map<String, TypeExpressionPair> context = new HashMap<String, TypeExpressionPair>();
-            symbolTableList.add(context);
+        symbolTableList.add(context);
         
-        for(int i = 0; i < callParams.size(); i++) {
-            context.put(
-                funkParams.get(i).getName(), 
-                new TypeExpressionPair(
-                    funkParams.get(i).getTypeNode(), 
-                    callParams.get(i).evaluate(symbolTableList, functionTable)
-                )
-            );
-        }
+        
 
         // get retunrned expression node (call evaluate in case something like ID and need actual value)
         ExpressionNode returned = null;
