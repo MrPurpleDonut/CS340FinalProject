@@ -48,8 +48,11 @@ public class IfStatementNode extends StatementNode {
 	if ( ((BooleanLiteralExpressionNode)bool).getValue() ){
 	    // the StatementListNode class doesn't have a run method, not totally sure how to continue to execute the statements in the body of the condition
 	    //ifBody.run();
+        Interpreter.runStatementList(symbolTableList, functionTable, ifBody);
 	} else{
 	    //elseBody.run();
+        
+        Interpreter.runStatementList(symbolTableList, functionTable, elseBody);
 	}
     }
 }

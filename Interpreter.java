@@ -52,6 +52,22 @@ public class Interpreter{
         List<Map<String, TypeExpressionPair>> symbolTableList = new ArrayList<Map<String, TypeExpressionPair>>();
         symbolTableList.add(0, globalTable);
         
+       runStatementList(symbolTableList, functionTable, statementList); 
+
+        //TODO:Create run method for StatementNode - abstract method implimented by each specific one
+        //TODO:Create evaluate method for expression Node - returns an ExpressionNode
+        //For basic nodes (NumExpressionNode, etc..) return self, otherwise return simplified nodes
+        //Then we can impliment abstract method and have each class implemenet it
+        //TODO: Change toString method for some of the ExpressionNodes so
+        //the method better represents the value so we can print easier
+        //Call evaluate(...) on the node first, then print it out
+
+    }
+
+    public static void runStatementList(List<Map<String, TypeExpressionPair>> symbolTableList,
+            Map<String, FunctionNode> functionTable, StatementListNode statementList){
+        //Breaking this out into a method so we can call run statementList in other places
+        //And have it work the same
         Iterator<ASTNode> stmtIter = statementList.childrenIter().iterator();
         while(stmtIter.hasNext()){
             StatementNode statement = (StatementNode) stmtIter.next();
@@ -62,16 +78,7 @@ public class Interpreter{
                 e.printStackTrace();
                 System.exit(1);
             }
-        }
-
-        //TODO:Create run method for StatementNode - abstract method implimented by each specific one
-        //TODO:Create evaluate method for expression Node - returns an ExpressionNode
-        //For basic nodes (NumExpressionNode, etc..) return self, otherwise return simplified nodes
-        //Then we can impliment abstract method and have each class implemenet it
-        //TODO: Change toString method for some of the ExpressionNodes so
-        //the method better represents the value so we can print easier
-        //Call evaluate(...) on the node first, then print it out
-
+        }    
     }
 
     
