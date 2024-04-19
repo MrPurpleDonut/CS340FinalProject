@@ -142,6 +142,7 @@ public class FunctionCallExpressionNode extends ExpressionNode {
                 returnedType = returned.getValue().getClass().getSimpleName();
             }
             catch(NullPointerException N) {
+                symbolTableList.remove(context);
                 throw new IllegalStateException("Error: No return statement");
             }
 
@@ -163,6 +164,7 @@ public class FunctionCallExpressionNode extends ExpressionNode {
             }
 
             if(!(typeMatches)) {
+                symbolTableList.remove(context);
                 throw new IllegalStateException("Error: expected type of " + expectedType + " doesn't match returned type of " + returnedType);
             }
         }
