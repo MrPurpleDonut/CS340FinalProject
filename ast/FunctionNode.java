@@ -54,19 +54,18 @@ public class FunctionNode extends ASTNode {
 
         // check to make sure there is a return statement
         Iterator<ASTNode> iterator = this.body.childrenIter().iterator();
-        ReturnStatementNode returnStmt = null;
-        
+        boolean hasReturn = false;
+       
+
+
         while(iterator.hasNext()) {
             ASTNode check = iterator.next();
 
             if(this.debugMode) {
                 System.out.println("In funk: " + check.toString());
             }
-
-
             if(check.toString().equals("Return Statement")) {
-                returnStmt = (ReturnStatementNode) check;
-
+                hasReturn = true;
                 if(this.debugMode) {
                     System.out.println("FOUND RETURN STATEMENT!");
                 }
@@ -79,30 +78,13 @@ public class FunctionNode extends ASTNode {
         if(this.debugMode) {
             System.out.println("--running body");
         }
-
-        iterator = this.body.childrenIter().iterator();
         
-        while(iterator.hasNext()) {
-            Object check = iterator.next();
-            
-            boolean isReturnStaement = check.equals(returnStmt);
-            if(isReturnStaement) {
-                return ((ReturnStatementNode) check).getReturnExpressionNode();
-            }
-            else {
-                if(check.getClass().getSimpleName().contains("Statement")) {
-                    StatementNode line = (StatementNode) check;
+        Interpreter.runStatementList(symbolTableList, functionTable, this.body);
 
-                    line.run(symbolTableList, functionTable);
-                }
-                else {
-                    ExpressionNode line = (ExpressionNode) check;
-
-                    line.evaluate(symbolTableList, functionTable);
-                }
-            }
-        }
-
+        if(hasReturn){
+            Map<String, TypeExpressionPair> context = symbolTableList.get(symbolTableList.size()-1);
+            return context.get("return").getValue();
+        }   
         return null;
     }
 }

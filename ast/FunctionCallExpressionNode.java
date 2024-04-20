@@ -105,6 +105,12 @@ public class FunctionCallExpressionNode extends ExpressionNode {
                     }
 
                     break;
+                case "Boolean":
+                    if(funkParamType.equals("bool")) {
+                        match = true;
+                    }
+
+                    break;
             }
 
             if(!(match)) {
@@ -157,6 +163,12 @@ public class FunctionCallExpressionNode extends ExpressionNode {
                     break;
                 case "String":
                     if(expectedType.equals("text")) {
+                        typeMatches = true;
+                    }
+
+                    break;
+                case "Boolean":
+                    if(expectedType.equals("bool")) {
                         typeMatches = true;
                     }
 

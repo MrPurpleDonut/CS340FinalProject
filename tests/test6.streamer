@@ -5,3 +5,4 @@ funk num addThem(num x, num y)
 }
 
 print addThem(40, 2);
+print addThem(addThem(2,5), 6);

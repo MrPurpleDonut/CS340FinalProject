@@ -73,7 +73,15 @@ public class Interpreter{
             StatementNode statement = (StatementNode) stmtIter.next();
             try{
                 if(!(statement instanceof ErrorStatementNode)){
-                    statement.run(symbolTableList, functionTable);
+                    if(statement instanceof ReturnStatementNode){
+                        ExpressionNode returnValue = ((ReturnStatementNode)statement).getReturnExpressionNode();
+                        returnValue.evaluate(symbolTableList, functionTable); 
+                        Map<String, TypeExpressionPair> context = symbolTableList.get(symbolTableList.size()-1);
+                        context.put("return", new TypeExpressionPair(new TypeNode("void"), returnValue));
+                        return;
+                    }else{
+                        statement.run(symbolTableList, functionTable);
+                    }
                 }
             }catch(Exception e){
                 if(stmtIter.hasNext()){
