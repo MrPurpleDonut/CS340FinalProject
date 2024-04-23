@@ -11,7 +11,14 @@ public class ForStatementNode extends StatementNode {
     private String loopVar;
     private ExpressionNode collection;
     private StatementListNode body;
-
+    
+    /**
+     * Constructor for ForStatementNodes, note for loops can only be for each loops and only have 2 arguments to initalize
+     * @param loopVarType The type of the newly created loop variable
+     * @param loopVarName The String ID name of the newly created loop variable
+     * @param collection The expression representing the collection to iterate through
+     * @param body The statements composing the body of the loop 
+     */
     public ForStatementNode(TypeNode loopVarType, String loopVarName,
                             ExpressionNode collection,
                             StatementListNode body) {
@@ -41,6 +48,16 @@ public class ForStatementNode extends StatementNode {
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
         //TODO: Implement run
+	Map<String, TypeExpressionPair> context = symbolTableList.get(0);	
+	for (int i = symbolTableList.size() - 1; i >= 0; i--){
+	    context = symbolTableList.get(i);
+	    if (context.containsKey(this.loopVar)){ //Checks if the loop variable has been established in the current or any larger contexts
+		throw new IllegalStateException("Cannot re-instantiate variable: " + this.loopVar);	
+	    }
+	}
+	//What we want to do is run the statement list, each time giving it the next successive element in the collection... Not sure how to do that, I see Interpreter.runStatementList() being used
+	//I'm not sure if I'm iterating through the colllection expressionNode properly
+	
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }
