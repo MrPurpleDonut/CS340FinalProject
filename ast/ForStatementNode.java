@@ -47,7 +47,6 @@ public class ForStatementNode extends StatementNode {
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
 	Map<String, TypeExpressionPair> context = symbolTableList.get(0);	
 	for (int i = symbolTableList.size() - 1; i >= 0; i--){
 	    context = symbolTableList.get(i);
@@ -55,9 +54,22 @@ public class ForStatementNode extends StatementNode {
 		throw new IllegalStateException("Cannot re-instantiate variable: " + this.loopVar);	
 	    }
 	}
-	//What we want to do is run the statement list, each time giving it the next successive element in the collection... Not sure how to do that, I see Interpreter.runStatementList() being used
-	//I'm not sure if I'm iterating through the colllection expressionNode properly
-	
-        throw new UnsupportedOperationException("Not yet implemented");
+
+	context = symbolTableList.get(symbolTableList.size() - 1);
+	if (!(context.get(this.collection).getType() instanceof ListTypeNode)){ //Checks that the collection's type is a ListType (which has a child node containing the element type). We do this first to make sure we don't get a NullPointer when we try to get the child in the next check
+	    throw new IllegalArgumentException("Must give list variable in for loop");
+	}
+
+	TypeNode listType = context.get(collection).getType();
+	if (listType.children.get(0) != this.loopVarType){ //Checks that the collection's element type is the same as the Loop Variable's Type
+	    throw new IllegalArgumentException("List Type must match Loop Variable Type");   
+	}
+	ListExpressionNode listExpr = (ListExpressionNode) this.collection.evaluate(symbolTableList,functionTable); //I could put this in a try, and catch TypeCastExceptions, but we check above to make sure collection is a List already so I don't know if that would be redundant / necessary 
+	for (int i = 0; i < listExpr.size(); i++){
+	    //context.put(this.loopVar, listExpr.get(i)); Need to make the listExpression into a TypeExpressionPair to put it into the context
+	    //We have a loop that will set the loopVar to successive entries in the List Expression in the current context
+	    //TODO: Put context back into larger SymbolTableList then call Interpreter.runStatementList() with this.body for the statement list
+	}
+        throw new UnsupportedOperationException("Types are correct, for loop not yet implemented");
     }
 }

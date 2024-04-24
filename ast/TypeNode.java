@@ -23,4 +23,19 @@ public class TypeNode extends ASTNode {
     public String toString() {
         return "Type: " + this.typeName;
     }
+
+    @Override
+    public boolean equals(Object o){
+	if (!(o instanceof TypeNode)){
+	    return false;   
+	} else {
+	    TypeNode other = (TypeNode) o;
+	    if (this.getTypeName().equals( other.getTypeName())){
+		return true;	
+	    }
+	    else{
+		return false;
+	    }
+	}
+    }
 }
