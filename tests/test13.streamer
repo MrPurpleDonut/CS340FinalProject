@@ -8,3 +8,6 @@ funk num sum(list<num> nums)
   return result;
 }
 
+list<num> listOfNums = {1,2,3};
+
+print sum(listOfNums);
