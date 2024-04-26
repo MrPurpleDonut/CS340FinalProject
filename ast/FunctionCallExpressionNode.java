@@ -84,6 +84,13 @@ public class FunctionCallExpressionNode extends ExpressionNode {
         for(int i = 0; i < funkParams.size(); i++) {
             String funkParamType = funkParams.get(i).getTypeNode().getTypeName();
             ExpressionNode evaluate = callParams.get(i).evaluate(symbolTableList, functionTable);
+            if(evaluate instanceof ListExpressionNode){ 
+                context.put(funkParams.get(i).getName(), 
+                    new TypeExpressionPair(
+                        funkParams.get(i).getTypeNode(), 
+                        evaluate));
+                continue;
+            }
             String callParamType = evaluate.getValue().getClass().getSimpleName();
             context.put(funkParams.get(i).getName(), 
                 new TypeExpressionPair(
