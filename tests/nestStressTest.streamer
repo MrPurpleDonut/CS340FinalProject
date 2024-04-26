@@ -1,0 +1,27 @@
+list<num> listOfNums = {1, 1, 1, 1, 1};
+
+num result = 0;
+
+for(num a : listOfNums) {
+    for(num b : listOfNums) {
+        for(num c : listOfNums) {
+            for(num d : listOfNums) {
+                for(num e : listOfNums) {
+                    for(num f : listOfNums) {
+                        for(num g : listOfNums) {
+                            for(num h : listOfNums) {
+                                for(num i : listOfNums) {
+                                    for(num j : listOfNums) {
+                                        result = result + 1;
+                                    }
+                                }
+                            }
+                        }        
+                    }
+                }
+            }
+        }    
+    }
+}
+
+print result;
