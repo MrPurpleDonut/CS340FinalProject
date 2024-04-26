@@ -431,7 +431,7 @@ public class Parser extends java_cup.runtime.lr_parser {
 
 
 public void syntax_error(Symbol lastToken) {
-    System.err.println("Syntax error at  " +
+     System.err.println("Syntax error at  " +
                        "Line: " + lastToken.left + "   " +
                        "Column: " + lastToken.right);
 }
@@ -478,7 +478,7 @@ class CUP$Parser$actions {
 		int sright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		StatementListNode s = (StatementListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Program parsed!");
+        // System.err.println("Program parsed!");
         RESULT = new ProgramNode(f, s);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("program",0, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -510,7 +510,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		FunctionListNode l = (FunctionListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Function list parsed!");
+        // System.err.println("Function list parsed!");
         l.addFunction(f, 0);
         RESULT = l;
     
@@ -523,7 +523,7 @@ class CUP$Parser$actions {
             {
               FunctionListNode RESULT =null;
 		
-        System.err.println("Empty function list parsed!");
+        // System.err.println("Empty function list parsed!");
         RESULT = new FunctionListNode();
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("func_list",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -547,7 +547,7 @@ class CUP$Parser$actions {
 		int sright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		StatementListNode s = (StatementListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Function parsed!");
+        // System.err.println("Function parsed!");
         RESULT = new FunctionNode(t, i, p, s);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("func",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-8)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -573,7 +573,7 @@ class CUP$Parser$actions {
             {
               ParameterListNode RESULT =null;
 		
-        System.err.println("Empty parameter list parsed!");
+        // System.err.println("Empty parameter list parsed!");
         RESULT = new ParameterListNode();
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("param_list",9, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -588,7 +588,7 @@ class CUP$Parser$actions {
 		int pright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ParameterNode p = (ParameterNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("End of Parameter list parsed!");
+        // System.err.println("End of Parameter list parsed!");
         RESULT = new ParameterListNode(p);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("non_empty_param_list",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -606,7 +606,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ParameterListNode l = (ParameterListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Parameter list parsed!");
+        // System.err.println("Parameter list parsed!");
         l.addParameter(p, 0);
         RESULT = l;
     
@@ -625,7 +625,7 @@ class CUP$Parser$actions {
 		int iright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		String i = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Parameter parsed!");
+        // System.err.println("Parameter parsed!");
         RESULT = new ParameterNode(t, i);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("param",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -643,7 +643,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		StatementListNode l = (StatementListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Statement list parsed!");
+        // System.err.println("Statement list parsed!");
         /* Add statement at position 0; it should be at the *front* of the list */
         l.addStatement(s, 0);
         RESULT = l;
@@ -657,7 +657,7 @@ class CUP$Parser$actions {
             {
               StatementListNode RESULT =null;
 		
-        System.err.println("Empty statement list parsed!");
+        // System.err.println("Empty statement list parsed!");
         RESULT = new StatementListNode();
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt_list",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -672,7 +672,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as expression!");
+        // System.err.println("Statement parsed as expression!");
         RESULT = new ExpressionStatementNode(e);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -687,7 +687,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as print!");
+        // System.err.println("Statement parsed as print!");
         RESULT = new PrintStatementNode(e);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -705,7 +705,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as assignment!");
+        // System.err.println("Statement parsed as assignment!");
         RESULT = new AssignStatementNode(i, e);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -726,7 +726,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as a declaration assignment!");
+        // System.err.println("Statement parsed as a declaration assignment!");
         AssignStatementNode assignment = new AssignStatementNode(i, e);
         RESULT = new DeclarationStatementNode(t, i, assignment);
     
@@ -748,7 +748,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as a declaration file read!");
+        // System.err.println("Statement parsed as a declaration file read!");
         FileReadStatementNode assignment = new FileReadStatementNode(i, e);
         RESULT = new DeclarationStatementNode(t, i, assignment);
     
@@ -767,7 +767,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as a file write!");
+        // System.err.println("Statement parsed as a file write!");
         RESULT = new FileWriteStatementNode(e1, e2);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -785,7 +785,7 @@ class CUP$Parser$actions {
 		int iright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		String i = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as a declaration!");
+        // System.err.println("Statement parsed as a declaration!");
         RESULT = new DeclarationStatementNode(t, i);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -800,7 +800,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		StatementListNode l = (StatementListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as error statement!");
+        // System.err.println("Statement parsed as error statement!");
         RESULT = new ErrorStatementNode(l);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -815,7 +815,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as exit statement!");
+        // System.err.println("Statement parsed as exit statement!");
         RESULT = new ExitStatementNode(e);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -830,7 +830,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as return!");
+        // System.err.println("Statement parsed as return!");
         RESULT = new ReturnStatementNode(e);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -848,7 +848,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		StatementListNode l = (StatementListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as until!");
+        // System.err.println("Statement parsed as until!");
         RESULT = new UntilStatementNode(s, l);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -866,7 +866,7 @@ class CUP$Parser$actions {
 		int ilright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		StatementListNode il = (StatementListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as if statement!");
+        // System.err.println("Statement parsed as if statement!");
         RESULT = new IfStatementNode(e, il);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -887,7 +887,7 @@ class CUP$Parser$actions {
 		int elright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		StatementListNode el = (StatementListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as if-else statement!");
+        // System.err.println("Statement parsed as if-else statement!");
         RESULT = new IfStatementNode(e, il, el);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-10)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -911,7 +911,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		StatementListNode l = (StatementListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as for statement!");
+        // System.err.println("Statement parsed as for statement!");
         RESULT = new ForStatementNode(t, i, e, l);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-9)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -929,7 +929,7 @@ class CUP$Parser$actions {
 		int clright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		CaseListNode cl = (CaseListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Statement parsed as switch statement!");
+        // System.err.println("Statement parsed as switch statement!");
         RESULT = new SwitchStatementNode(e, cl);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("stmt",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -947,7 +947,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as plus!");
+        // System.err.println("Expression parsed as plus!");
         RESULT = new BinaryOpExpressionNode(e1, e2, "+");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -965,7 +965,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as minus!");
+        // System.err.println("Expression parsed as minus!");
         RESULT = new BinaryOpExpressionNode(e1, e2, "-");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -983,7 +983,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as times!");
+        // System.err.println("Expression parsed as times!");
         RESULT = new BinaryOpExpressionNode(e1, e2, "*");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1001,7 +1001,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as divide!");
+        // System.err.println("Expression parsed as divide!");
         RESULT = new BinaryOpExpressionNode(e1, e2, "/");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1019,7 +1019,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as and!");
+        // System.err.println("Expression parsed as and!");
         RESULT = new BinaryOpExpressionNode(e1, e2, "&&");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1037,7 +1037,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as or!");
+        // System.err.println("Expression parsed as or!");
         RESULT = new BinaryOpExpressionNode(e1, e2, "||");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1052,7 +1052,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as not!");
+        // System.err.println("Expression parsed as not!");
         RESULT = new NotExpressionNode(e);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1070,7 +1070,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as comparison!");
+        // System.err.println("Expression parsed as comparison!");
         RESULT = new BinaryOpExpressionNode(e1, e2, "==");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1085,7 +1085,7 @@ class CUP$Parser$actions {
 		int iright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		String i = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as ID!");
+        // System.err.println("Expression parsed as ID!");
         RESULT = new IdExpressionNode(i);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1100,7 +1100,7 @@ class CUP$Parser$actions {
 		int nright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		String n = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as NUM!");
+        // System.err.println("Expression parsed as NUM!");
         RESULT = new NumExpressionNode(n);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1115,7 +1115,7 @@ class CUP$Parser$actions {
 		int sright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		String s = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as QUOTED STRING!");
+        // System.err.println("Expression parsed as QUOTED STRING!");
         RESULT = new StringExpressionNode(s);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1127,7 +1127,7 @@ class CUP$Parser$actions {
             {
               ExpressionNode RESULT =null;
 		
-        System.err.println("Expression parsed as TRUE literal!");
+        // System.err.println("Expression parsed as TRUE literal!");
         RESULT = new BooleanLiteralExpressionNode(true);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1139,7 +1139,7 @@ class CUP$Parser$actions {
             {
               ExpressionNode RESULT =null;
 		
-        System.err.println("Expression parsed as FALSE literal!");
+        // System.err.println("Expression parsed as FALSE literal!");
         RESULT = new BooleanLiteralExpressionNode(false);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1154,7 +1154,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionListNode l = (ExpressionListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Expression parsed as expression list!");
+        // System.err.println("Expression parsed as expression list!");
         RESULT = l;
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1172,7 +1172,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionListNode l = (ExpressionListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Expression parsed as a function call!");
+        // System.err.println("Expression parsed as a function call!");
         RESULT = new FunctionCallExpressionNode(i, l);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1187,7 +1187,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression parsed as input!");
+        // System.err.println("Expression parsed as input!");
         RESULT = new InputExpressionNode(e);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1205,7 +1205,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Expression parsed as list access!");
+        // System.err.println("Expression parsed as list access!");
         RESULT = new ListAccessExpressionNode(e1, e2);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1223,7 +1223,7 @@ class CUP$Parser$actions {
 		int e2right = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		ExpressionNode e2 = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Expression parsed as list filter!");
+        // System.err.println("Expression parsed as list filter!");
         RESULT = new ListFilterExpressionNode(e1, e2);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1249,7 +1249,7 @@ class CUP$Parser$actions {
             {
               ExpressionListNode RESULT =null;
 		
-        System.err.println("Empty expression list parsed!");
+        // System.err.println("Empty expression list parsed!");
         RESULT = new ExpressionListNode();
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr_list",6, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1264,7 +1264,7 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("End of Expression list parsed!");
+        // System.err.println("End of Expression list parsed!");
         RESULT = new ExpressionListNode(e);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("non_empty_expr_list",7, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1282,7 +1282,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ExpressionListNode l = (ExpressionListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Expression list parsed!");
+        // System.err.println("Expression list parsed!");
         l.addExpression(e, 0);
         RESULT = l;
     
@@ -1298,7 +1298,7 @@ class CUP$Parser$actions {
 		int sright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		StatementNode s = (StatementNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("End of Case list parsed!");
+        // System.err.println("End of Case list parsed!");
         CaseListNode cl = new CaseListNode();
         cl.addCase(new CaseNode(null, s));
         RESULT = cl;
@@ -1318,7 +1318,7 @@ class CUP$Parser$actions {
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		CaseListNode l = (CaseListNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Case list parsed!");
+        // System.err.println("Case list parsed!");
         l.addCase(c, 0);
         RESULT = l;
     
@@ -1337,7 +1337,7 @@ class CUP$Parser$actions {
 		int sright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		StatementNode s = (StatementNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-        System.err.println("Case parsed!");
+        // System.err.println("Case parsed!");
         RESULT = new CaseNode(e, s);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("case",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1349,7 +1349,7 @@ class CUP$Parser$actions {
             {
               TypeNode RESULT =null;
 		
-        System.err.println("Type parsed as NUM!");
+        // System.err.println("Type parsed as NUM!");
         RESULT = new TypeNode("num");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1361,7 +1361,7 @@ class CUP$Parser$actions {
             {
               TypeNode RESULT =null;
 		
-        System.err.println("Type parsed as TEXT!");
+        // System.err.println("Type parsed as TEXT!");
         RESULT = new TypeNode("text");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1373,7 +1373,7 @@ class CUP$Parser$actions {
             {
               TypeNode RESULT =null;
 		
-        System.err.println("Type parsed as BOOL!");
+        // System.err.println("Type parsed as BOOL!");
         RESULT = new TypeNode("bool");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1385,7 +1385,7 @@ class CUP$Parser$actions {
             {
               TypeNode RESULT =null;
 		
-        System.err.println("Type parsed as VOID!");
+        // System.err.println("Type parsed as VOID!");
         RESULT = new TypeNode("void");
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1400,7 +1400,7 @@ class CUP$Parser$actions {
 		int tright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		TypeNode t = (TypeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-        System.err.println("Type parsed as LIST!");
+        // System.err.println("Type parsed as LIST!");
         RESULT = new ListTypeNode(t);
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);

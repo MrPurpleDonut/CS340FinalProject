@@ -51,7 +51,7 @@ public class StreamerC {
                 // the parser returns a Symbol whose value instance variable
                 // is the root nonterminal of the abstract syntax tree
                 Symbol root = parser.parse();
-                System.out.println("Program parsed correctly!");
+                //System.out.println("Program parsed correctly!");
                 if (root.value instanceof ASTNode) {
                     return (ProgramNode)root.value;
                 }

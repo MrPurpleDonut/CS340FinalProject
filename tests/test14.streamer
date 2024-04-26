@@ -13,4 +13,4 @@ funk void printResult(num result, text start)
   print start + "\n" + result;
 }
 
-printResult(sum({86, 7, 5, 309}, "Result"));
+printResult(sum({86, 7, 5, 309}), "Result");
