@@ -1,0 +1,7 @@
+
+list<text> nums = {"A","B","C"};
+  for (text n : nums)
+  {
+    print n;
+  }
+

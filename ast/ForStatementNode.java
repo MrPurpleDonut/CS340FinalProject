@@ -88,6 +88,5 @@ public class ForStatementNode extends StatementNode {
         Interpreter.runStatementList(symbolTableList, functionTable, this.body); 
 	}
         symbolTableList.remove(context);
-        throw new UnsupportedOperationException("Types are correct, for loop not yet implemented");
     }
 }
