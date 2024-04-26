@@ -85,6 +85,7 @@ public class FunctionCallExpressionNode extends ExpressionNode {
             String funkParamType = funkParams.get(i).getTypeNode().getTypeName();
             ExpressionNode evaluate = callParams.get(i).evaluate(symbolTableList, functionTable);
             if(evaluate instanceof ListExpressionNode){ 
+                //TODO: Type check that the list type is the correct type, not just that it is a list
                 context.put(funkParams.get(i).getName(), 
                     new TypeExpressionPair(
                         funkParams.get(i).getTypeNode(), 
