@@ -33,7 +33,24 @@ public class SwitchStatementNode extends StatementNode {
     @Override
     public void run (List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Implement run
-        throw new UnsupportedOperationException("Not yet implemented");
+        this.switchVal = this.switchVal.evaluate(symbolTableList, functionTable);
+        
+        Iterator<ASTNode> caseIter = this.cases.childrenIter().iterator();
+        while(caseIter.hasNext()){
+            CaseNode currentCase = (CaseNode) caseIter.next();
+            if(currentCase.toString().equals("Default Case")){
+                currentCase.getStatement().run(symbolTableList, functionTable);
+                return;
+            }
+            ExpressionNode caseValue = currentCase.getValue().evaluate(symbolTableList, functionTable);
+            if(!(caseValue instanceof PrimitiveExpressionNode) || !(this.switchVal instanceof PrimitiveExpressionNode)){
+                throw new UnsupportedOperationException("Comparison only implimented for primitive types");
+            }
+            if(((PrimitiveExpressionNode)caseValue).getValue().equals(
+                ((PrimitiveExpressionNode)this.switchVal).getValue())){
+                currentCase.getStatement().run(symbolTableList, functionTable);
+                return;
+            }
+        }
     }
 }

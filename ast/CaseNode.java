@@ -16,6 +16,14 @@ public class CaseNode extends ASTNode {
         this.children.add(run);
     }
 
+    public StatementNode getStatement(){
+        return this.runStatement;
+    }
+
+    public ExpressionNode getValue(){
+        return this.valueExpression;
+    }
+
     @Override
     public String toString() {
         if (this.valueExpression == null)
