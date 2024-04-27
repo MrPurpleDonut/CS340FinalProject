@@ -89,6 +89,12 @@ public class BinaryOpExpressionNode extends ExpressionNode {
                 return new BooleanLiteralExpressionNode(andVal);
                }
                 throw new IllegalArgumentException("And expected types bool and bool");
+            case "==":
+                if(leftOp instanceof PrimitiveExpressionNode && rightOp instanceof PrimitiveExpressionNode){
+                boolean equalVal = ((PrimitiveExpressionNode)leftOp).getValue().equals(((PrimitiveExpressionNode)rightOp).getValue());
+                return new BooleanLiteralExpressionNode(equalVal);
+                }
+                throw new UnsupportedOperationException("Equality not yet implimented for lists");
             default:
                 throw new UnsupportedOperationException("Not yet implemented");
         }
