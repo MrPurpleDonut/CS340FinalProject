@@ -82,16 +82,40 @@ public class FunctionCallExpressionNode extends ExpressionNode {
         Map<String, TypeExpressionPair> context = new HashMap<String, TypeExpressionPair>();
         // make sure called parameters types and function paramter types match
         for(int i = 0; i < funkParams.size(); i++) {
-            String funkParamType = funkParams.get(i).getTypeNode().getTypeName();
+            TypeNode currentTypeNode = funkParams.get(i).getTypeNode();
             ExpressionNode evaluate = callParams.get(i).evaluate(symbolTableList, functionTable);
             if(evaluate instanceof ListExpressionNode){ 
                 //TODO: Type check that the list type is the correct type, not just that it is a list
                 context.put(funkParams.get(i).getName(), 
-                    new TypeExpressionPair(
-                        funkParams.get(i).getTypeNode(), 
-                        evaluate));
+                    new TypeExpressionPair(currentTypeNode,evaluate));
                 continue;
             }
+            if(evaluate instanceof ExpressionListNode){
+                if(!(currentTypeNode instanceof ListTypeNode)){
+                    throw new IllegalStateException("Error: expression list passed for non list param");
+                }
+                ExpressionListNode expressionList = (ExpressionListNode) evaluate;
+                ListTypeNode listType = (ListTypeNode) currentTypeNode;
+                ListExpressionNode child;
+                switch(listType.getSubType().getTypeName()){
+                    case "text":
+                        child = new ListExpressionNode<String>(expressionList);
+                         break;
+                    case "num":
+                        child = new ListExpressionNode<Double>(expressionList);
+                        break;
+                    case "bool":
+                        child = new ListExpressionNode<Boolean>(expressionList);
+                        break;
+                    default:
+                        throw new IllegalStateException("Invalid list Type");
+                }
+
+                context.put(funkParams.get(i).getName(), 
+                    new TypeExpressionPair(currentTypeNode,child));
+                continue;
+            }
+            String funkParamType = funkParams.get(i).getTypeNode().getTypeName();
             String callParamType = evaluate.getValue().getClass().getSimpleName();
             context.put(funkParams.get(i).getName(), 
                 new TypeExpressionPair(

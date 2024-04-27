@@ -41,6 +41,6 @@ public class ExpressionListNode extends ExpressionNode {
     @Override
     public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        throw new UnsupportedOperationException("Not yet implemented");
+        return this;
     }
 }

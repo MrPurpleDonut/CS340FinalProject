@@ -13,5 +13,9 @@ public class ListTypeNode extends TypeNode {
         this.children.add(listOf);
     }
 
+    public TypeNode getSubType(){
+        return this.listOf;
+    }
+
     // we'll just use the superclass toString...
 }

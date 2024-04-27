@@ -46,6 +46,18 @@ public class BinaryOpExpressionNode extends ExpressionNode {
                 double plusVal = ((NumExpressionNode)leftOp).getValue() + ((NumExpressionNode)rightOp).getValue();
                 return new NumExpressionNode(plusVal);
                }
+               if(leftOp instanceof StringExpressionNode && rightOp instanceof StringExpressionNode){
+                String plusVal = ((StringExpressionNode)leftOp).getValue() + ((StringExpressionNode)rightOp).getValue();
+                return new StringExpressionNode(plusVal);
+               }
+               if(leftOp instanceof NumExpressionNode && rightOp instanceof StringExpressionNode){
+                String plusVal = ((NumExpressionNode)leftOp).getValue() + ((StringExpressionNode)rightOp).getValue();
+                return new StringExpressionNode(plusVal);
+               }
+               if(leftOp instanceof StringExpressionNode && rightOp instanceof NumExpressionNode){
+                String plusVal = ((StringExpressionNode)leftOp).getValue() + ((NumExpressionNode)rightOp).getValue();
+                return new StringExpressionNode(plusVal);
+               }
                 throw new IllegalArgumentException("Plus expected types num and num");
             case "-":
                if(leftOp instanceof NumExpressionNode && rightOp instanceof NumExpressionNode){
