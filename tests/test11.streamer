@@ -1,3 +1,21 @@
+funk text replaceAll(text inputText, text toBeReplaced, text replacementText){
+    list<text> split = inputText / " ";
+    text final = "";
+
+    for(text n: split){
+        if(n == toBeReplaced){
+            final = final+ " " + replacementText;
+        }
+        else{
+            final = final+ " " + n;
+        }
+    }
+    return final;
+
+}
+
+
+
 text contents << args[0];
-replaceAll(contents, "teh", "the");
+contents = replaceAll(contents, "teh", "the");
 contents >> args[0];

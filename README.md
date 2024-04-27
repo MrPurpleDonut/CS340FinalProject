@@ -7,6 +7,4 @@ This is to make sure the classpath is correct
 
 4/26/24 Doesn't pass: 
 test8 (UntilStatement not implemented)
-test10 (ListFilter not implemented)
-test11(Test uses function not declared)
 test15(SwitchStatement not implemented)

@@ -1,4 +1,7 @@
 text data << args[0];
 list<text> lines = data / "\n";
+for(text n: lines){
+    print n;
+}
 list<text> matches = lines[? args[1] ?];
 print matches;
