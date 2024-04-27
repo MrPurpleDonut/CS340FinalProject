@@ -8,12 +8,12 @@ import java.util.*;
  */
 public class ListFilterExpressionNode extends ExpressionNode {
     private ExpressionNode array;
-    private ExpressionNode position;
+    private ExpressionNode regex;
 
     public ListFilterExpressionNode(ExpressionNode array, ExpressionNode pos) {
         super();
         this.array = array;
-        this.position = pos;
+        this.regex = pos;
         this.children.add(array);
         this.children.add(pos);
     }
@@ -31,6 +31,21 @@ public class ListFilterExpressionNode extends ExpressionNode {
     @Override
     public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        throw new UnsupportedOperationException("Not yet implemented");
+        this.array = array.evaluate(symbolTableList, functionTable);
+        this.regex = regex.evaluate(symbolTableList, functionTable);
+        if(!(this.array instanceof ListExpressionNode) || !(this.regex instanceof StringExpressionNode)){
+            throw new IllegalStateException("Error with expressions passed in filter");
+        }
+        String pattern = (String) this.regex.getValue();
+        ListExpressionNode<String> stringList = (ListExpressionNode<String>)this.array;
+        List<String> matches = new ArrayList<String>();
+        for(int i = 0; i < stringList.size(); i++){
+            String s = stringList.get(i);
+            if(s.matches(pattern)){
+                matches.add(s);
+            }
+        }
+
+        return new ListExpressionNode(matches);
     }
 }
