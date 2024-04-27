@@ -45,6 +45,7 @@ public class FileWriteStatementNode extends StatementNode {
 	try {
 	    FileWriter out = new FileWriter(new File(path));
 	    out.append(write);
+        out.close();
 	} catch (IOException e){
 	    e.printStackTrace();
 	}

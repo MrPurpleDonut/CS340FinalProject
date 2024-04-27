@@ -91,9 +91,9 @@ public class AssignStatementNode extends StatementNode {
         child = child.evaluate(symbolTableList, functionTable);
         
         if(child instanceof ListExpressionNode){
+            //TODO: check types
             variable.setValue(child);
             return;
-            
         }
 
         //TypeChecking
