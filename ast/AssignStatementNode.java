@@ -86,8 +86,14 @@ public class AssignStatementNode extends StatementNode {
             }
             variable.setValue(child);
             return;
-        }else{
-            child = child.evaluate(symbolTableList, functionTable);
+        }
+
+        child = child.evaluate(symbolTableList, functionTable);
+        
+        if(child instanceof ListExpressionNode){
+            variable.setValue(child);
+            return;
+            
         }
 
         //TypeChecking

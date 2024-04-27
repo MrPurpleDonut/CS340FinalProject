@@ -76,6 +76,12 @@ public class BinaryOpExpressionNode extends ExpressionNode {
                 double divVal = ((NumExpressionNode)leftOp).getValue() / ((NumExpressionNode)rightOp).getValue();
                 return new NumExpressionNode(divVal);
                }
+               if(leftOp instanceof StringExpressionNode && rightOp instanceof StringExpressionNode){
+                String[] stringList = ((StringExpressionNode)leftOp).getValue().split(
+                        ((StringExpressionNode)rightOp).getValue());
+
+                return new ListExpressionNode<String>(Arrays.asList(stringList));
+               }
                 throw new IllegalArgumentException("Divide expected types num and num");
             case "||":
                if(leftOp instanceof BooleanLiteralExpressionNode && rightOp instanceof BooleanLiteralExpressionNode){

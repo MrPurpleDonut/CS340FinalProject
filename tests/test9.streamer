@@ -1,3 +1,11 @@
+funk num length(list<text> listy){
+    num sum = 0;
+    for(text p: listy){
+        sum = sum+1;
+    }
+    return sum;
+}
+
 text data << args[0];
 list<text> lines = data / "\n";
 print length(lines);
