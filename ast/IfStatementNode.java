@@ -51,7 +51,9 @@ public class IfStatementNode extends StatementNode {
         Interpreter.runStatementList(symbolTableList, functionTable, ifBody);
 	} else{
 	    //elseBody.run();
-        
+        if(this.elseBody == null){
+            return;
+        }
         Interpreter.runStatementList(symbolTableList, functionTable, elseBody);
 	}
     }
