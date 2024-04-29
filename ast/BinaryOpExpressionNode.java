@@ -66,10 +66,6 @@ public class BinaryOpExpressionNode extends ExpressionNode {
                }
                 throw new IllegalArgumentException("Minus expected types num and num");
             case "*":
-               if(leftOp instanceof NumExpressionNode && rightOp instanceof NumExpressionNode){
-                double timesVal = ((NumExpressionNode)leftOp).getValue() * ((NumExpressionNode)rightOp).getValue();
-                return new NumExpressionNode(timesVal);
-               }
                 throw new IllegalArgumentException("Times expected types num and num");
             case "/":
                if(leftOp instanceof NumExpressionNode && rightOp instanceof NumExpressionNode){
