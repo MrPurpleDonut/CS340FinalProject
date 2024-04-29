@@ -34,7 +34,9 @@ public class PrintStatementNode extends StatementNode {
 
         // account for trying to print a function call that returns void
         try {
-            //TODO: We want to print out the node
+            //TODO: We want to print out the node "child"
+            //Currently it prints out nothing
+            //Each node has a toString() method
             System.out.println();
         }
         catch(NullPointerException N) {

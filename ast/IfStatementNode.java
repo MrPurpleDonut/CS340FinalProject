@@ -45,6 +45,11 @@ public class IfStatementNode extends StatementNode {
 	    if (!(bool instanceof BooleanLiteralExpressionNode)){
 	        throw new IllegalArgumentException("Provide valid Boolean Expression for if conditional");
 	    }
-        boolean val = ((BooleanLiteralExpressionNode)bool).getValue(); 
+        boolean val = ((BooleanLiteralExpressionNode)bool).getValue();
+        
+        //TODO: Add in support for if/else statement
+        //We have the boolean value stored in val
+        //We can use the existing if/else structure in java
+
 	}
 }

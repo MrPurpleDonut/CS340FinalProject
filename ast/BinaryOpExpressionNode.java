@@ -36,7 +36,6 @@ public class BinaryOpExpressionNode extends ExpressionNode {
     @Override
     public ExpressionNode evaluate(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Add supported for more binary operations
         ExpressionNode leftOp = left.evaluate(symbolTableList, functionTable);
         ExpressionNode rightOp = right.evaluate(symbolTableList, functionTable);
 
@@ -66,6 +65,26 @@ public class BinaryOpExpressionNode extends ExpressionNode {
                }
                 throw new IllegalArgumentException("Minus expected types num and num");
             case "*":
+
+                //TODO: Add in support for multiply
+                //The operators have to be nums
+                //The result is a num
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 throw new IllegalArgumentException("Times expected types num and num");
             case "/":
                if(leftOp instanceof NumExpressionNode && rightOp instanceof NumExpressionNode){
