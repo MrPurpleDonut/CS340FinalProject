@@ -21,7 +21,7 @@ public class BooleanLiteralExpressionNode extends PrimitiveExpressionNode {
 
     @Override
     public String toString() {
-        return "Boolean literal: " + this.value;
+        return "" + this.value;
     }
     /**
      *This method evaluates this node and returns the expression after evaluating
