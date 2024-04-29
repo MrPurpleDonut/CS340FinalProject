@@ -27,9 +27,6 @@ public class PrintStatementNode extends StatementNode {
     @Override
     public void run(List<Map<String, TypeExpressionPair>> symbolTableList,
             Map<String, FunctionNode> functionTable){
-        //TODO: Change toString method for some of the ExpressionNodes so
-        //the method better represents the value so we can print easier
-        //Call evaluate(...) on the node first, then print it out
         
         Iterator<ASTNode> iterator = this.childrenIter().iterator();
         ExpressionNode child = (ExpressionNode) iterator.next();
@@ -37,7 +34,8 @@ public class PrintStatementNode extends StatementNode {
 
         // account for trying to print a function call that returns void
         try {
-            System.out.println(child.toString());
+            //TODO: We want to print out the node
+            System.out.println();
         }
         catch(NullPointerException N) {
             throw new IllegalStateException("Error: Cannot print a void return function");
