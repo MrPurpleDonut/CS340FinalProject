@@ -1,6 +1,5 @@
-Interpreter for the language we made in class
+Interpreter for the Streamer language we made in class
 
-Run "make Interpreter.class" to compile the Interpreter class and "./interpreter {FILENAME}" to run it on a file
-This is to make sure the classpath is correct
-
-4/27/24: Should pass all tests 
+Run "./makeall.sh" to compile everything needed for the interpreter
+Run "./interpreter {FILENAME} {ARGS}" to run it on a given file with the given command line args
+This ensures the classpath is correct
